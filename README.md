@@ -35,12 +35,6 @@ Introduces events, listening functions, form inputs, and basic animations.
  - A text editor. [Sublime Text](http://sublimetext.com) is free and available for Mac, PC, and Linux.
 
 
-### Have a question?
+## Have a question?
 
 Feedback, fixes and suggestions are welcome! Please [post an issue](https://github.com/cfarm/bmc-javascript-workshop/issues) or email cat@cfarman.com.
-
-## For Teachers
-
-### Contributing    
-
-Feedback, fixes and suggestions are welcome! Please [post an issue](https://github.com/cfarm/bmc-javascript-workshop/issues) or submit a pull request with any changes.
