@@ -98,7 +98,7 @@
             <section>
                 <h3>JavaScript Files</h3>
                 <p>Just like with CSS, you can keep your JavaScript separate in its own file, and load it from your HTML file.</p>
-<pre><code>&lt;script src="path/to/file.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script src="mycode.js"&gt;&lt;/script&gt;
 </code></pre>
             </section>
             <section>
@@ -135,14 +135,22 @@
 document.getElementById('headline').innerHTML = 'Hello World!';
 </code></pre>
             </section>
+
+            <section>
+                <h3>What is the console?</h3>
+                <p>In Developer tools in your web browser, you can view the JavaScript console.</p>
+                <p>Use it for debugging: view the line number and filename where your errors originate!</p>
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/console">Talk to the console</a> by using built-in console methods to <a href="https://cfpb.github.io/">send messages you can view</a> in the browser.</p>
+                <img src="images/console-error.png" alt="An example of a console error showing an Error messge on line 6 of a file" style="width:800px;height:auto;max-height:auto;max-width:100%;">
+            </section>
+
             <section>
                 <h3>Practice time!</h3>
                 <ul>
-                    <li>Open practice.html. Add a comment to the code.</li>
+                    <li>Create a new file called mycode.js. Move your JavaScript code to this file and link it to your practice.html page. </li>
+                    <li><span class="blue">Hint:</span> remove any &lt;script&gt; open and close tags from your new JavaScript file, since these are HTML tags and only work in .html files.</li>
+                    <li>Add a comment to the code.</li>
                     <li>Try different ways of printing your message.</li>
-                    <li>Create a new file called mycode.js. Move your JavaScript code to this file and link it to your page. </li>
-                    <li>
-                    <span class="blue">Hint:</span> remove any &lt;script&gt; open and close tags from your new JavaScript file, since these are HTML tags and only work in .html files.</li>
                 </ul>
             </section>
        
@@ -196,8 +204,10 @@ console.log (numberOfKittens);
             <section>
 				<h3>Practice time!</h3>
                 <p>In your JS file, create a variable and give it a valid name and a value. Then, display the value.</p>
-<pre><code>var numberOfKittens = 5;
+<pre><code class="javascript">var numberOfKittens = 5;
 console.log (numberOfKittens);
+
+// puts number inside the #headline element
 document.getElementById('headline').innerHTML = numberOfKittens;
 </code></pre>
             </section>
@@ -313,15 +323,20 @@ console.log(kittensName); //Outputs 'Admiral Snuggles'
             <ul>
                 <li>Store the following into variables: city or place, job title, home, and hobby.</li>
                 <li>Output your fortune to the screen like so: "You will be a <u>_job_</u> living in a <u>_home_</u> in <u>_city or place_</u>. For fun you will <u>_hobby_</u>."</li>
+                <li>Use string concatenation to make your sentence.</li>
+                <li class="red">Hint: <a href="puzzles.html">check out the solution here if you get stuck</a>.</li>
             </ul>
 
-            <p class="red">Hint: <a href="puzzles.html">check out the solution here if you get stuck</a>.</p>
+            
 
             </section>
 
             <section>
                 <h3>Functions</h3>
-                <p>Functions are separable, reusable pieces of code. 
+                <p>Functions are separable, reusable pieces of code. </p>
+
+                <img src="images/function-machine.png" alt="" width="400" height="auto">
+                <small>http://mathinsight.org/media/image/image/function_machine.png</small>
     
             </section>
             <section>
@@ -441,7 +456,7 @@ document.getElementById('headline').innerHTML = name2;
 
             <section>
                 <h3>Practice time!</h3>
-                <p><a href="https://cfarm.github.io/gdi-intro-js/puzzles.html#calculator">JavaScript Puzzle: The Calculator</a></p>
+                <p><a href="https://cfarm.github.io/bmc-javascript-workshop/puzzles.html#calculator">JavaScript Puzzle: The Calculator</a></p>
             </section>
 
             <!-- BREAK -->
@@ -461,7 +476,313 @@ var receipt   = 'Meal: ' + billPreTip + ' Tip: ' + billTip +
 console.log(receipt); 
 </code></pre>
             </section>
-    
+
+<section>
+        <h3>The DOM: Anatomy of a website</h3>
+        <div class = "blue"> Your Content</div>
+        <div><span class = "blue">+ HTML: </span>Structure</div>
+        <div><span class = "blue">+ CSS: </span>Presentation</div>
+        <div class = "blue">= Your Website</div>
+        <p>A website is a way to present your content to the world, using HTML and CSS to present that content &amp; make it look good.</p>
+      </section>
+
+            <section>
+      <h3>The DOM: IDs vs. Classes</h3>
+        <div class = "left-align">
+          <span class = "yellow">ID</span> -- Should only apply to one element on a webpage, e.g., A webpage only has one footer.
+          <p>The "#" is how you tell CSS "this is an id."</p>
+        </div>
+        <div class = "left-align">
+          <span class = "yellow">Class</span> -- Lots of elements can have the same class, e.g., There can be many warnings on one webpage.
+          <p>The "." is how you tell CSS "this is a class name."</p>
+          <p class="blue">Look at the HTML in your practice.html file to see examples of classes and IDs.
+        </div>
+      </section>
+
+      
+  
+
+            <section>
+              <h3>The DOM Tree</h3>
+              <p>We model the nested structure of an HTML page with the DOM (Document Object Model) Tree. The browser makes a "map" of all the elements on a page.</p>
+            </section>
+            <section>
+              <h3>The DOM: Sample Code</h3>
+                <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Test Page&lt;/title&gt;
+        &lt;style&gt;
+            h1 {
+             color: red;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;My Page&lt;/h1&gt;
+        &lt;p&gt;Hello World!&lt;/p&gt;
+        &lt;img src="http://placekitten.com/200/300" alt="cat"/&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+            </section>
+            <section>
+              <h3>The DOM: Sample Model</h3>
+              <img src="images/dom-tree.png" alt="Simple DOM Tree"/>
+            </section>
+          
+        <!--Accessing the DOM-->
+  
+            <section>
+              <h3>DOM Access</h3>
+              <p>Your browser automatically builds a Document object to store the DOM of a page. To change a page:</p>
+              <ol>
+                <li>Find the DOM node and store it in a variable</li>
+                <li>Use methods to manipulate the node</li>
+              </ol>
+            </section>
+
+
+<section>
+        <h3>Objects</h3>
+        <p>What is a <strong>document object</strong>?</p>
+        <p>What is an <strong><em>object?</em></strong></p>
+            </section>
+
+<section>
+        <h3>Objects</h3>
+        <p>Objects let us store a collection of properties.</p>
+              <pre><code>
+var objectName = { 
+  propertyName: propertyValue,
+  propertyName: propertyValue,
+  ...
+};
+        </code></pre>
+              <pre><code>
+var aboutMe = {
+  hometown: 'Somewhere in Texas',
+  hair: 'brown, usually short'
+}; 
+        </code></pre>
+      </section>
+
+<section>
+        <h3>Objects</h3>
+        <p>Object properties can have values with all of the data types we've seen, including numbers, text, arrays, and other objects.</p>
+<pre><code>var aboutMe = {
+  hometown: 'Somewhere in Texas',
+  hair: 'brown, usually short',
+  likes: ['kittens', 'code', 'dancing'],
+  birthday: {month: 4, day: 17}
+}; 
+        </code></pre>
+      </section>
+            <section>
+        <h3>Accessing &amp; Changing Objects</h3>
+        <p>You can retrieve and update values using "dot notation"</p>
+              <pre><code>
+aboutMe.hometown = 'Paris'; // change the value of hometown
+var myHometown = aboutMe.hometown; // save it as a variable
+        </code></pre>
+              <p>Or using "bracket notation" (like arrays)</p>
+              <pre><code>
+aboutMe['hair'] = 'blue'; // change the value of hair
+var myHair = aboutMe['hair']; // save the color as a variable
+        </code></pre>
+      </section>
+            <section>
+        <h3>Changing Objects</h3>
+        <p>You can use dot or bracket notation to add new properties</p>
+              <pre><code>
+aboutMe.pet = 'cat';
+        </code></pre>
+              <p>Or delete them</p>
+              <pre><code>
+delete aboutMe.pet; // oh noes!!!
+        </code></pre>
+      </section>
+
+
+            <section>
+              <h3>DOM Access: By Id</h3>
+              <p>You can find nodes by id using the method:</p>
+              <pre><code>
+document.getElementById(id);
+        </code></pre>
+              <p>To find:</p>
+              <pre><code>
+&lt;img id="kittenPic" src="http://placekitten.com/200/300" alt="cat"/&gt;
+        </code></pre>
+              <p>We would use:</p>
+              <pre><code>
+var imgKitten = document.getElementById('kittenPic');
+        </code></pre>
+            </section>
+
+            <section>
+              <h3>Let's Develop It</h3>
+                <p>Save the <code>headline</code>, <code>header</code> and <code>footer</code> elements in your <code>practice.html</code> file as variables.</p>
+                <p>Use <code>querySelector</code> and <code>getElementById</code>.</p>
+                <p>Log each variable to the console to view the HTML associated with each.</p>
+<pre><code>var header = document.querySelector('.header');
+var footer = document.querySelector('footer');
+var headline = document.getElementById('headline');
+
+console.log(headline);
+console.log(header);
+console.log(footer);
+        </code></pre>
+            </section>
+
+            <section>
+              <h3>DOM Nodes: Attributes</h3>
+              <p>You can access and change attributes of DOM nodes using dot notation.</p>
+              <p>To change this element:</p>
+              <pre><code>
+&lt;img id="kittenPic" src="http://placekitten.com/200/300" alt="cat"/&gt;
+        </code></pre>
+              <p>We could change the src attribute this way:</p>
+              <pre><code>
+var imgKitten = document.getElementById('kittenPic');
+var oldSrc = imgKitten.src;
+imgKitten.src = 'http://placekitten.com/100/500';
+        </code></pre>
+            </section>
+            
+            <section>
+              <h3>DOM Nodes: Getting and Setting Attributes</h3>
+              <p>You can also use <code>getAttribute/setAttribute</code></p>
+              <pre><code>
+&lt;img id="kittenPic" src="http://placekitten.com/200/300" alt="cat"/&gt;
+        </code></pre>
+              <p>We could change the src attribute this way:</p>
+              <pre><code>
+var imgKitten = document.getElementById('kittenPic');
+var oldSrc = imgKitten.getAttribute('src');
+imgKitten.setAttribute('src', 'http://placekitten.com/100/500');
+        </code></pre>
+            </section>
+
+            <section>
+              <h3>DOM Nodes: Getting and Setting Attributes</h3>
+            
+              <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">A list of HTML attributes we can change using JavaScript</a></p>
+            </section>
+
+            <section>
+              <h3>Let's Develop It</h3>
+                <p>Add a picture to your <code>practice.html</code> page. Give it an <code>id</code> attribute so we can grab it with JS.</p>
+                <p>Use JavaScript to add 'height' and 'width' attributes to the img element.</p>
+<pre><code>var imgKitten = document.getElementById('kittenPic');
+imgKitten.setAttribute('height', '200');
+imgKitten.setAttribute('width', '200');
+        </code></pre>
+            </section>
+
+
+            <section>
+              <h3>DOM Nodes: Styles</h3>
+              <p>You can change page css using <code>style</code></p>
+              <p>To make this CSS:</p>
+              <pre><code>
+body {
+  color: red;
+}
+        </code></pre>
+              <p>Use this JavaScript:</p>
+              <pre><code>
+var pageNode = document.getElementsByTagName('body')[0];
+pageNode.style.color = 'red';
+        </code></pre>
+            </section>
+            <section>
+              <h3>DOM Nodes: More Styles</h3>
+              <p>Change any CSS property with a "-" to camelCase, and be sure to include a unit on any number</p>
+              <p>To make this CSS:</p>
+              <pre><code>
+body {
+  background-color: pink;
+  padding-top: 10px;
+}
+        </code></pre>
+              <p>Use this JavaScript:</p>
+              <pre><code>
+var pageNode = document.getElementsByTagName('body')[0]
+pageNode.style.backgroundColor = 'pink';
+pageNode.style.paddingTop = '10px';
+        </code></pre>
+            </section>
+
+            <section>
+              <h3>Let's Develop It</h3>
+                <p>Use JavaScript to change the background color of your <code>practice.html</code> page.</p>
+<pre><code>var pageNode = document.getElementsByTagName('body')[0];
+pageNode.style.backgroundColor = 'turquoise';
+        </code></pre>
+                <p>Change the font of your h1 element using the same methods and the 'font-family' CSS property.</p>
+                <p>Change some more CSS properties of your jumbotron, header, and footer elements using your existing variables.</p>
+            </section>       
+
+            <section>
+              <h3>DOM innerHTML</h3>
+              <p>Each DOM node has an <code>innerHTML</code> property with the HTML of all its children. You can use the property to view or change the HTML of a node.</p>
+              <p>For example, you can overwrite the entire body:</p>
+              <pre><code>
+var pageNode = document.getElementsByTagName('body')[0];
+pageNode.innerHTML = '&lt;h1&gt;Oh Noes!&lt;/h1&gt; &lt;p&gt;I just changed the whole page!&lt;/p&gt;'
+        </code></pre>
+              <p>Or just add some new content to the end</p>
+              <pre><code>
+pageNode.innerHTML += '...just adding this bit at the end of the page.';
+        </code></pre>
+            </section>
+            <section>
+              <h3>DOM innerHTML continued</h3>
+              <p>You can also target a particular element</p>
+              <p>To fill this HTML element:</p>
+              <pre><code>
+&lt;p id="warning"&gt;&lt;/p&gt;
+        </code></pre>
+              <p>We can select the node and modify it</p>
+              <pre><code>
+var warningParagraph = document.getElementById('warning');
+warningParagraph.innerHTML = 'Danger Will Robinson!';
+        </code></pre>
+            </section>
+            <section>
+              <h3>Creating New Nodes</h3>
+              <p>The <code>document</code> object also provides ways to create nodes from scratch:</p>
+              <pre><code>
+document.createElement(tagName);
+document.createTextNode(text);
+document.appendChild();
+        </code></pre>
+            </section>
+            <section>
+              <h3>Creating New Nodes: Sample Code</h3>
+              <pre><code>
+var pageNode = document.getElementsByTagName('body')[0];
+
+var newImg = document.createElement('img');
+newImg.src = 'https://cfarm.github.io/gdi-intro-js/images/basket-of-kittens.jpg';
+newImg.style.border = '1px solid black';
+pageNode.appendChild(newImg);
+
+var newParagraph = document.createElement('p');
+var paragraphText = document.createTextNode('Squee!');
+newParagraph.appendChild(paragraphText);
+pageNode.appendChild(newParagraph);
+        </code></pre>
+            </section>
+            <section>
+        <h3>Let's Develop It</h3>
+                <p>Create a new paragraph element and add it to a div on your page.</p>
+                <p>Use the sample code to get started!</p>
+      </section>
+
+<!--     
             <section>
                 <h3>Variable Scope</h3>
                 <p>The scope of a variable is how long the computer will remember it.</p>
@@ -489,7 +810,7 @@ whatDoesMyKittenLookLike();
 
 console.log ('I have a ' + kittenColor + ' cat.'); //Won't work
 </code></pre>
-            </section>
+            </section> -->
 
             <section>
                 <h3>Boolean Variables</h3>
@@ -539,7 +860,7 @@ if (bananas &gt; 0) {
                       <tr>
                        <td>a == b</td>
                        <td>Equal</td>
-                       <td><strong><code>TRUE</code></strong> if a is equal to b (can be different types).</td>
+                       <td><strong><code>TRUE</code></strong> if a is equal to b (can be different types, like a number and a string).</td>
                       </tr>
                       <tr>
                        <td>a === b</td>
@@ -685,7 +1006,7 @@ if (bananas &gt;=2 &amp;&amp; bananas &lt;7) {
 
             <section>
                 <h3>Practice time!</h3>
-                <p><a href="https://cfarm.github.io/gdi-intro-js/puzzles.html#bigger">JavaScript Puzzle: What number is bigger?</a></p>
+                <p><a href="https://cfarm.github.io/bmc-javascript-workshop/puzzles.html#bigger">JavaScript Puzzle: What number is bigger?</a></p>
             </section>
 
 
@@ -757,22 +1078,8 @@ document.getElementById('foods').innerHTML = myFaveFoods;
             </section>
 
             <section>
-                <h3>While loops</h3>
-                <p>While will repeat the same code over and over until some condition is met.</p>
-<pre><code>var bottlesOfBeer = 99;
-while (bottlesOfBeer &gt;= 1) {
-    console.log (bottlesOfBeer + ' bottles of beer on the wall');
-    bottlesOfBeer = bottlesOfBeer - 9;
-}
-        </code></pre>
-            </section>
-            <section>
-        <h3>Infinite Loops</h3>
-                <p>Make sure something changes in the loop, or your loop will go on forever...</p>
-      </section>
-            <section>
                 <h3>For loops</h3>
-                <p>For loops are very similar, but you declare a counter in the statement.</p>
+                <p>Take a list of data and do the same thing to each item in the list, over and over, until we say STOP!</p>
 <pre><code>//will count 1 to 10
 for (var i = 1; i &lt;= 10; i++) {
     console.log (i); 
@@ -848,31 +1155,120 @@ for (var i = 100; i &lt;= 200; i++) {
         </code></pre>
             </section>
 
-      <section>
-                <h3>Group exercise: Fizz Buzz</h3>
-                <p>Write a program that prints the numbers from 1 to 100. </p>
-                <p>But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. 
-                <p>For numbers which are multiples of both three and five print “FizzBuzz”.</p>
-<pre><code>//Count from 1 to 100
-for (var i = 1; i &lt;= 100; i++) {
+            <section>
+    <h3>Practice time!</h3>
+    <p>
+    <a href="https://cfarm.github.io/bmc-javascript-workshop/puzzles.html#evenodd">JavaScript Puzzle: Even/Odd Counter</a>
+    </p>        
+                
+            </section>
 
+                 <section>
+              <h3>DOM Access: By Tag Name</h3>
+              <p>You can get a list of specific kinds of elements using this method:</p>
+              <pre><code>
+document.getElementsByTagName(tagName);
+        </code></pre>
+              <p>To find:</p>
+              <pre><code>
+&lt;li&gt;Daisy&lt;/li&gt;
+&lt;li&gt;Tulip&lt;/li&gt;
+        </code></pre>
+              <p>We would use:</p>
+              <pre><code>
+var listItems = document.getElementsByTagName('li');
+for (var i =0; i &lt; listItems.length; i++) {
+  var listItem = listItems[i];
 }
         </code></pre>
             </section>
 
             <section>
-    <h3>Practice time!</h3>
-    <p>
-    <a href="https://cfarm.github.io/gdi-intro-js/puzzles.html#evenodd">JavaScript Puzzle: Even/Odd Counter</a>
-    </p>        
-                
+              <h3>getElement vs. getElements</h3>
+              <p>Any method that starts with "getElement" will return a <span class = "blue">single</span> node.</p>
+              <pre><code>
+document.getElementById('uniqueID'); //returns a single node
+        </code></pre>
+              <p>Any method that starts with "getElements" will return a <span class = "blue">array</span> of nodes. To modify a single node, you will need to use bracket notation to select the correct one.</p>
+              <pre><code>
+document.getElementsByTagName('p'); //returns multiple nodes
+var specficParagraph = document.getElementsByTagName('p')[2];
+        </code></pre>
             </section>
-                  
-            <section>
+
+      <section>
         <h3>Practice time!</h3>
-                <p>Write a loop that gives you the 9's times table,<br /> from 9 x 1 = 9 to 9 x 12 = 108.</p>
-                <p>Finish early? Try using a loop inside a loop to write all the times tables, from 1 to 12.</p>
+          <p>Use <code>getElementsByTagName</code> to get a list of all <code>p</code> paragraph elements on the page, and save it as a variable.</p>
+          <p>Write a loop that replaces the text inside every paragraph on your page.</p>
+
+          <pre><code>
+var paragraphs = document.getElementsByTagName('p');
+for (var i =0; i &lt; paragraphs.length; i++) {
+  var paragraph = paragraphs[i];
+  paragraph.innerHTML = "You've been hacked!";
+}
+        </code></pre>
       </section>
+
+
+      <section>
+        <h3>Events</h3>
+        <p>An 'event' is a type of object that is created when the user interacts with a web page.</p>
+                <p>For example, JS creates an event when a user clicks an element.</p>
+                <pre><code>
+element.onclick = function () {
+  //code to execute when the click happens
+};
+        </code></pre>
+      </section>
+            <section>
+        <h3>Types of Events</h3>
+        <p>There are <a href="http://www.w3schools.com/jsref/dom_obj_event.asp">variety of events</a>. Some of the most common:</p>
+                <ul>
+                    <li>onclick: The event occurs when the user clicks on an element</li>
+                    <li>onmouseover: The event occurs when the pointer is moved onto an element</li>
+                    <li>onkeyup: The event occurs when the user releases a key</li>
+                    <li>onload: The event occurs when a document has been loaded</li>
+                    <li>onfocus: The event occurs when an element gets focus</li>
+                </ul>
+      </section>            
+            <section>
+                <h3>Events and Code</h3>
+                <p>How do you make an event trigger some code?</p>
+                <ol>
+                    <li>Break your code into functions</li>
+                    <li>Associate a function with a JavaScript event</li>
+                </ol>                    
+      </section>
+
+            <section>
+                <h3>Listening Functions</h3>
+                <p>Listening functions work like many of the other things we have done. First, save an object on the page:</p>
+                <pre><code>
+var myTarget = document.getElementById('clickMe');
+                </code></pre>
+                <p>Then add an event listener to that object:</p>
+                <pre><code>
+myTarget.onclick=function(){
+     alert ('Hi!');
+}
+                </code></pre>
+      </section>
+            <section>
+        <h3>Let's Develop It</h3>
+                <!-- <p>Download <a href="class2-downloads.zip">class2 exerise files</a>.</p> -->
+                <p>Let's use that big green "Click me" button!
+                <p>Make an alert that pops up with a <code>click</code> event</p>
+<pre><code>
+// add this ID "clickMe" to the button in practice.html first or this won't work
+var myTarget = document.getElementById('clickMe'); 
+
+myTarget.onclick=function(){
+     alert ('Hi! You clicked the button! Well done.');
+}
+                </code></pre>
+      </section>            
+
 			
 			<section>
 				<h3>Resources</h3>
@@ -888,7 +1284,7 @@ for (var i = 1; i &lt;= 100; i++) {
 			</div><!-- Close .slides -->
   		<footer>
         <div class="copyright">
-          JavaScript Workshop - Catherine Farman, based on slides by <a href="https://github.com/cfarm/gdi-intro-js">Girl Develop It</a>
+          JavaScript Workshop - Catherine Farman, based on slides by <a href="https://github.com/cfarm/bmc-javascript-workshop">Girl Develop It</a>
           <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
         </div><!-- Close .copyright -->
       </footer>
